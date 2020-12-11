@@ -15,15 +15,15 @@ pattern6 -> N=10 | pat=50
 
 #parameters to set!
 way = 1     #1 -> data from file. 2-> random data
-N = 10      #inputs
-pat = 10    #patterns
-K = 10     #epoch
-lr = 0.001  #learning rate
+N = 2       #inputs
+pat = 2     #patterns
+K = 50      #epoch
+lr = 0.001   #learning rate
 Wmin = 1.0  #lower weight range
 Wmax = 2.0  #upper weight range
 Pmin = 1.0  #lower input value range
 Pmax = 2.0  #upper input value range
-fileName = "patterns2"  #data source 
+fileName = "patterns1"  #data source/ file name
 
 if(way == 1):
     data=pd.read_csv("./patterns/" + fileName+".txt", header=None)
@@ -58,16 +58,13 @@ for k in range(K):
     #for each pattern(pat), calculate output (input multiply by weights and sum everything), then calc Error as Delta and modyfy weights.
     for p in range(pat): 
         print("-------P: ", p, " ---------")
-        #bierzemy pattern - jednen wiersz
         #lets get one pattern, one row
         row = X[p]  
         
-        #Mnozymy kazdy element patterna przez wage
         #multiply each input (from that pattern/row) by weights
         out = np.multiply( weights, row)
         
-        #suma z waga*X
-        #Sum everthing (weights*X)
+        #Sum of (weights*X)
         #output = neuron's output
         output = np.sum(out)            
         
@@ -87,6 +84,12 @@ ans=pd.read_csv("./ans/" + fileName+"-ans.txt", header=None)
 print("\nPatterns results(weights to reach)")
 print(ans.to_numpy()[0])
 
-diff = weights - ans.to_numpy()
+(diff) = abs(weights) - abs(ans.to_numpy())
 print("\nDifferences between received values and patterns result" )
-print(diff[0])
+print( abs( diff[0] ) )
+
+print("\nParameters:" )
+print("inputs(N): ",N)
+print("Patterns(pat): ",pat)
+print("Epoch(K): ",K)
+print("LearningRate(lr): ",lr)

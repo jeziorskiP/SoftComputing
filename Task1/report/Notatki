@@ -1,0 +1,48 @@
+Dlatego funkcja aktywacji nazywana jest funkcją aktywacji liniowej, w której aktywacja węzła wyjściowego jest po prostu równa sumie odpowiednich produktów wejściowych / wagowych w sieci.
+
+
+
+Ponieważ uczenie się metodą Gradient Descent wymaga, aby każda zmiana w określonej wadze była proporcjonalna do ujemnej wartości pochodnej błędu, 
+zmiana danej wagi musi być proporcjonalna do ujemnej wartości naszego poprzedniego równania. Zastępując różnicę między docelową i rzeczywistą aktywacją odpowiedniego węzła wyjściowego 
+przez d i wprowadzając współczynnik uczenia się epsilon, równanie to można ponownie zapisać w ostatecznej postaci reguły delty:
+
+
+
+
+
+Powód zastosowania tutaj funkcji Linear Activation zamiast funkcji Threshold Activation może być teraz uzasadniony: 
+Funkcja aktywacji progu, która charakteryzuje zarówno sieć McCollocha i Pitts, jak i perceptron, 
+nie jest różniczkowalna na przejściu między aktywacjami 0 i 1 (nachylenie = nieskończoność), 
+a jego pochodna wynosi 0 na pozostałą część funkcji. W związku z tym funkcja aktywacji progu nie może być używana w uczeniu się zstępującej gradientu. 
+Natomiast funkcja aktywacji liniowej (lub inna funkcja, która jest różniczkowa) umożliwia obliczenie pochodnej błędu.
+
+
+The reasoning behind the use of a Linear Activation function here instead of a Threshold Activation function can now be justified: 
+Threshold activation function that characterizes both the McColloch and Pitts network and the perceptron is not differentiable at the transition 
+between the activations of 0and 1 (slope = infinity), and its derivative is 0 over the remainder of the function. Hence, Threshold activation function cannot be used in Gradient Descent learning. 
+Whereas a Linear Activation function (or any other function that is differential) allows the derivative of the error to be calculated.
+
+
+
+
+
+
+
+
+ Ta konkretna miara błędu jest atrakcyjna ze względu na jej pochodną, ​​której wartość jest potrzebna do zastosowania reguły delty i jest łatwa do obliczenia. 
+ Błąd w całym zestawie wzorców uczących (tj. W jednej iteracji lub epoce) jest obliczany poprzez zsumowanie wszystkich „Ep”:
+ 
+ 
+ 
+To calculate neuron's value we use Linear Activation function. the output node’s activation is simply equal to the sum of the network’s respective input/weight products.
+Use a Linear Activation function allows to calculate the derivative of the error. Reffering to the discussing topic it is the nessecary feature.
+
+
+
+Przedstawione rozwiązanie sprowadziło się w warunkach testowych. Rozwiązania wszytskich testowanych zestawów pokazały jego możliwości.
+Stosunkowo prosty algorytm jest w stanie znaleźć poszukiwane rozwiazanie. Posiada on wiele wad. Reguła delty może być używana tylko do trenowania jednowarstwowych sztucznych
+sieci neuronowych. Przez to wykorzystanie tego rzowiaązania jest znacząco ograniczone. 
+Ważnym aspektem, występującym w każdej sieci neuronowej jest dobór parametrów. Przy głębokiej analizie możliwości stosowanego roziwązania
+warto przeprowadzić wiele testów sprawdzających zachowanie algorytmy dla różnych wartości parametrów. Ta wiedza pozwala na optymalizacje pracy algorytmu.
+Dodatkowo, warto zapewnić odpowiedni zbior treningowy, gwarantujący poprawne wyniiki. Zgodnie z przeprowadzanym testem, minimalna ilosc wzorców powinna być większa niż ilość wejść.
+Reguła delty jest to dobre rozwiązanie do rozwiązywania prostych problemów. Jest to ciekwe rozwiązanie, pokazujące potęgę możliwości przy zastosowaniu prsotych rozwiązań.
