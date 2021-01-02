@@ -28,7 +28,7 @@ class ArgumentParser:
                                  type=int, default=2,
                                  help='hidden_size - define hiiden size')
 
-        self.parser.add_argument('-b', metavar='DELTA', dest='bias', type=int,
+        self.parser.add_argument('-b', metavar='N', dest='bias', type=int,
                                  default=1, help='bias - 1-> yes, 0-> no')
 
         self.args = self.parser.parse_args()
